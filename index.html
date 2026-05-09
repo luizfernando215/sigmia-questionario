@@ -1,0 +1,835 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovery SigmIA Commerce OS</title>
+  <style>
+    :root{
+      --bg:#020617;--bg2:#0B1F3A;--card:#0F172A;--card2:rgba(255,255,255,.07);
+      --line:rgba(203,213,245,.18);--text:#F8FAFC;--muted:#CBD5F5;--muted2:#94A3B8;
+      --cyan:#22D3EE;--teal:#14B8A6;--radius:22px;--shadow:0 24px 80px rgba(0,0,0,.36)
+    }
+    *{box-sizing:border-box}
+    html,body{width:100%;overflow-x:hidden}
+    body{
+      margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:var(--text);
+      background:radial-gradient(circle at top left,rgba(34,211,238,.18),transparent 34%),
+      radial-gradient(circle at bottom right,rgba(20,184,166,.16),transparent 32%),
+      linear-gradient(135deg,var(--bg),var(--bg2))
+    }
+    .wrap{width:min(1040px,calc(100vw - 28px));margin:0 auto;padding:22px 0 44px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+    .brand{display:flex;gap:18px;align-items:center;max-width:100%;min-width:0}
+    .brand>div:last-child,.q-head>div:last-child{min-width:0;max-width:100%}
+    .logo{width:clamp(178px,28vw,258px);height:auto;border:0;background:transparent;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35));display:block;flex:0 0 auto}
+    h1{margin:0 0 4px;font-size:clamp(22px,4vw,32px);letter-spacing:-1px;overflow-wrap:anywhere;white-space:normal}
+    .sub{color:var(--muted2);font-size:13px;line-height:1.45;overflow-wrap:anywhere;white-space:normal}
+    .pill{padding:10px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.07);color:var(--muted);font-size:12px;font-weight:800;white-space:nowrap}
+    .hero,.panel,.q{background:rgba(15,23,42,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero{padding:clamp(22px,5vw,38px);margin-bottom:18px}
+    .hero h2{margin:0 0 12px;font-size:clamp(30px,6vw,54px);letter-spacing:-2px;line-height:.98}
+    .hero p,.help,.small{color:var(--muted2);line-height:1.62;overflow-wrap:anywhere}
+    .toolbar{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;position:sticky;top:0;z-index:10;padding:12px 0;backdrop-filter:blur(12px)}
+    .progress{background:rgba(15,23,42,.96);border:1px solid var(--line);border-radius:18px;padding:14px}
+    .progress-top{display:flex;justify-content:space-between;gap:12px;color:var(--muted2);font-size:13px;font-weight:800;margin-bottom:10px}
+    .bar{height:10px;border-radius:999px;background:rgba(203,213,245,.13);overflow:hidden}
+    .bar span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--teal));transition:.3s}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    button,.btn-link{min-height:48px;border-radius:15px;border:1px solid var(--line);padding:0 18px;font-weight:900;color:var(--text);background:rgba(255,255,255,.09);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none}
+    button.primary,.btn-link.primary{border:0;color:#03101d;background:linear-gradient(135deg,var(--cyan),var(--teal))}
+    button.warning{color:#FEF3C7;background:rgba(245,158,11,.18);border-color:rgba(245,158,11,.3)}
+    button.danger{color:#FEE2E2;background:rgba(239,68,68,.16);border-color:rgba(239,68,68,.3)}
+    button.link{border:0;background:none;color:var(--cyan);font-weight:900;cursor:pointer;padding:0;min-height:auto}
+    form{display:grid;gap:16px;margin-top:8px}
+    .q{padding:clamp(16px,4vw,26px);scroll-margin-top:120px}
+    .q-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:15px}
+    .num{width:35px;height:35px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--teal));color:#03101d;display:grid;place-items:center;font-weight:900;flex:0 0 auto;font-size:14px}
+    .q h3{margin:0 0 7px;font-size:clamp(17px,3.5vw,24px);letter-spacing:-.5px;line-height:1.2;overflow-wrap:anywhere}
+    .q p{margin:0}
+    .opts{display:grid;gap:10px;margin-left:49px}
+    label.opt{min-height:52px;display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);background:var(--card2);border-radius:16px;cursor:pointer;line-height:1.35;font-size:15px}
+    label.opt:has(input:checked){border-color:rgba(34,211,238,.75);background:linear-gradient(135deg,rgba(34,211,238,.22),rgba(20,184,166,.14))}
+    label.opt input{width:20px;height:20px;accent-color:var(--cyan);flex:0 0 auto}
+    textarea{margin-left:49px;width:calc(100% - 49px);min-height:140px;resize:vertical;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--text);border-radius:16px;padding:14px;outline:none;font-size:15px;line-height:1.5;font-family:inherit}
+    .panel{padding:clamp(18px,4vw,28px);margin-top:18px}
+    .panel h2{margin:0 0 8px}
+    table{width:100%;border-collapse:collapse;margin-top:14px}
+    th,td{border-bottom:1px solid var(--line);padding:11px 8px;vertical-align:top;text-align:left;font-size:14px;line-height:1.45}
+    th{color:var(--muted2);text-transform:uppercase;font-size:12px;letter-spacing:.04em}
+    .msg-box{margin-left:0;width:100%;min-height:340px;font-size:13px;line-height:1.6;-webkit-user-select:text;user-select:text;touch-action:manipulation;background:rgba(255,255,255,.05);border-radius:16px;border:1px solid var(--line);color:var(--muted);padding:14px;}
+    .status-note{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+    .js-warning{padding:14px 16px;margin-bottom:18px;border:1px solid rgba(245,158,11,.42);border-radius:16px;background:rgba(245,158,11,.16);color:#FEF3C7;font-size:14px;line-height:1.55}
+    .js-ready .js-warning{display:none}
+    .hidden{display:none}
+    .send-anchor{display:block;height:1px;scroll-margin-top:14px}
+    #sendBox:target,#sendBox:target.hidden,#sendArea:target + #sendBox{display:block}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:rgba(15,23,42,.98);border:1px solid var(--line);color:var(--text);padding:12px 20px;border-radius:999px;box-shadow:var(--shadow);font-size:13px;font-weight:800;display:none;z-index:999;white-space:nowrap}
+    @media(max-width:860px){
+      .header{flex-direction:column;align-items:flex-start}
+      .brand{width:100%;align-items:flex-start;flex-direction:column}
+      .brand>div:last-child{width:100%}
+      .logo{width:min(250px,100%)}
+      .pill{width:100%;text-align:center}
+      .toolbar{position:static;grid-template-columns:1fr}
+      .actions{justify-content:stretch}
+      .actions button,.actions .btn-link{width:100%}
+      .opts,textarea{margin-left:0;width:100%}
+      table{display:block;overflow-x:auto}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <div class="brand">
+      <img class="logo" src="assets/sigmia-logo-transparent.png" alt="SigmIA">
+      <div>
+        <h1>Discovery Commerce OS</h1>
+        <div class="sub">Questionário com envio por WhatsApp ou e-mail</div>
+      </div>
+    </div>
+    <div class="pill">Salvamento automático no navegador</div>
+  </header>
+
+  <section class="hero">
+    <h2>Responda, revise e envie.</h2>
+    <p>Este formulário define as principais regras da plataforma integrada da SigmIA para Banca do Mané, Dijone Café e Casa Santos. Suas respostas são salvas automaticamente neste dispositivo.</p>
+  </section>
+
+  <div class="js-warning">
+    Este visualizador bloqueou o JavaScript do formulário. Abra este arquivo no Chrome ou Safari do celular; dentro de pré-visualizadores do WhatsApp, Gmail ou Drive os botões podem não executar.
+  </div>
+
+  <div class="toolbar">
+    <div class="progress">
+      <div class="progress-top">
+        <span id="progressLabel">0 de 20 respondidas</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="bar"><span id="progressFill"></span></div>
+    </div>
+    <div class="actions">
+      <button type="button" data-action="next-pending">Próxima pendente</button>
+      <button type="button" class="warning" data-action="toggle-review">Revisar</button>
+      <a href="#sendArea" class="btn-link primary js-prepare-send">Preparar Envio</a>
+    </div>
+  </div>
+
+  <form id="discoveryForm">
+
+    <article class="q" id="q01">
+      <div class="q-head"><div class="num">1</div><div>
+        <h3>As três empresas devem funcionar separadas dentro do sistema?</h3>
+        <p class="help">Define se Banca do Mané, Dijone Café e Casa Santos terão dados independentes.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q01" value="Sim, totalmente separadas"> Sim, totalmente separadas</label>
+        <label class="opt"><input type="radio" name="q01" value="Não, tudo junto"> Não, tudo junto</label>
+        <label class="opt"><input type="radio" name="q01" value="Parcialmente separadas"> Parcialmente separadas</label>
+        <label class="opt"><input type="radio" name="q01" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q02">
+      <div class="q-head"><div class="num">2</div><div>
+        <h3>Qual empresa deve começar primeiro?</h3>
+        <p class="help">Escolha qual operação deve receber o primeiro MVP funcional.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q02" value="Banca do Mané"> Banca do Mané</label>
+        <label class="opt"><input type="radio" name="q02" value="Dijone Café"> Dijone Café</label>
+        <label class="opt"><input type="radio" name="q02" value="Casa Santos"> Casa Santos</label>
+        <label class="opt"><input type="radio" name="q02" value="As três juntas"> As três juntas</label>
+        <label class="opt"><input type="radio" name="q02" value="Ainda não definido"> Ainda não definido</label>
+      </div>
+    </article>
+
+    <article class="q" id="q03">
+      <div class="q-head"><div class="num">3</div><div>
+        <h3>O que precisa estar pronto na primeira versão?</h3>
+        <p class="help">Marque tudo que for indispensável para considerar a primeira entrega utilizável.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="q03" value="Vender no balcão"> Vender no balcão</label>
+        <label class="opt"><input type="checkbox" name="q03" value="Controlar estoque"> Controlar estoque</label>
+        <label class="opt"><input type="checkbox" name="q03" value="Controlar caixa"> Controlar caixa</label>
+        <label class="opt"><input type="checkbox" name="q03" value="Emitir cupom fiscal"> Emitir cupom fiscal</label>
+        <label class="opt"><input type="checkbox" name="q03" value="Cadastrar produtos"> Cadastrar produtos</label>
+        <label class="opt"><input type="checkbox" name="q03" value="Cadastrar clientes"> Cadastrar clientes</label>
+        <label class="opt"><input type="checkbox" name="q03" value="Relatórios básicos"> Relatórios básicos</label>
+      </div>
+    </article>
+
+    <article class="q" id="q04">
+      <div class="q-head"><div class="num">4</div><div>
+        <h3>Os produtos serão vendidos por unidade, por peso ou dos dois jeitos?</h3>
+        <p class="help">Exemplo: café embalado por unidade, frutas por peso, queijo por peso.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q04" value="Apenas por unidade"> Apenas por unidade</label>
+        <label class="opt"><input type="radio" name="q04" value="Apenas por peso"> Apenas por peso</label>
+        <label class="opt"><input type="radio" name="q04" value="Por unidade e por peso"> Por unidade e por peso</label>
+        <label class="opt"><input type="radio" name="q04" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q05">
+      <div class="q-head"><div class="num">5</div><div>
+        <h3>Quais equipamentos o PDV deve considerar?</h3>
+        <p class="help">Marque os equipamentos que existem ou provavelmente serão usados.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="q05" value="Leitor de código de barras"> Leitor de código de barras</label>
+        <label class="opt"><input type="checkbox" name="q05" value="Balança"> Balança</label>
+        <label class="opt"><input type="checkbox" name="q05" value="Impressora térmica"> Impressora térmica</label>
+        <label class="opt"><input type="checkbox" name="q05" value="Máquina de cartão"> Máquina de cartão</label>
+        <label class="opt"><input type="checkbox" name="q05" value="Nenhum equipamento externo inicialmente"> Nenhum equipamento externo inicialmente</label>
+        <label class="opt"><input type="checkbox" name="q05" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q06">
+      <div class="q-head"><div class="num">6</div><div>
+        <h3>O sistema deve impedir venda quando o produto estiver sem estoque?</h3>
+        <p class="help">Essa regra afeta o PDV, o e-commerce e o controle de estoque.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q06" value="Sim, deve impedir"> Sim, deve impedir</label>
+        <label class="opt"><input type="radio" name="q06" value="Não, pode vender mesmo sem estoque"> Não, pode vender mesmo sem estoque</label>
+        <label class="opt"><input type="radio" name="q06" value="Depende do produto"> Depende do produto</label>
+        <label class="opt"><input type="radio" name="q06" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q07">
+      <div class="q-head"><div class="num">7</div><div>
+        <h3>O estoque da loja física e da loja online será o mesmo?</h3>
+        <p class="help">Define se balcão, WhatsApp e loja online compartilharão o mesmo saldo.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q07" value="Sim, será o mesmo estoque"> Sim, será o mesmo estoque</label>
+        <label class="opt"><input type="radio" name="q07" value="Não, serão estoques separados"> Não, serão estoques separados</label>
+        <label class="opt"><input type="radio" name="q07" value="Depende da empresa"> Depende da empresa</label>
+        <label class="opt"><input type="radio" name="q07" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q08">
+      <div class="q-head"><div class="num">8</div><div>
+        <h3>Quais locais de estoque precisam existir?</h3>
+        <p class="help">Marque os locais que fazem sentido para as empresas.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="q08" value="Loja/box"> Loja/box</label>
+        <label class="opt"><input type="checkbox" name="q08" value="Depósito"> Depósito</label>
+        <label class="opt"><input type="checkbox" name="q08" value="Câmara fria"> Câmara fria</label>
+        <label class="opt"><input type="checkbox" name="q08" value="Cozinha/produção"> Cozinha/produção</label>
+        <label class="opt"><input type="checkbox" name="q08" value="Estoque online"> Estoque online</label>
+        <label class="opt"><input type="checkbox" name="q08" value="Apenas um estoque simples"> Apenas um estoque simples</label>
+        <label class="opt"><input type="checkbox" name="q08" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q09">
+      <div class="q-head"><div class="num">9</div><div>
+        <h3>O sistema precisa emitir cupom fiscal ou nota fiscal já na primeira versão?</h3>
+        <p class="help">Define se a integração fiscal será prioridade inicial.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q09" value="Sim, precisa emitir na primeira versão"> Sim, precisa emitir na primeira versão</label>
+        <label class="opt"><input type="radio" name="q09" value="Não, pode ficar para depois"> Não, pode ficar para depois</label>
+        <label class="opt"><input type="radio" name="q09" value="Usaremos o sistema atual por enquanto"> Usaremos o sistema atual por enquanto</label>
+        <label class="opt"><input type="radio" name="q09" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q10">
+      <div class="q-head"><div class="num">10</div><div>
+        <h3>Qual documento fiscal o sistema deve emitir?</h3>
+        <p class="help">Escolha a opção mais próxima da necessidade atual.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q10" value="NFC-e para venda presencial"> NFC-e para venda presencial</label>
+        <label class="opt"><input type="radio" name="q10" value="NF-e"> NF-e</label>
+        <label class="opt"><input type="radio" name="q10" value="NFC-e e NF-e"> NFC-e e NF-e</label>
+        <label class="opt"><input type="radio" name="q10" value="Ainda não sei / contador precisa confirmar"> Ainda não sei / contador precisa confirmar</label>
+      </div>
+    </article>
+
+    <article class="q" id="q11">
+      <div class="q-head"><div class="num">11</div><div>
+        <h3>Se houver falha na emissão fiscal, a venda pode continuar?</h3>
+        <p class="help">Exemplo: internet instável, erro da SEFAZ ou emissão em contingência.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q11" value="Sim, pode continuar"> Sim, pode continuar</label>
+        <label class="opt"><input type="radio" name="q11" value="Não, deve bloquear a venda"> Não, deve bloquear a venda</label>
+        <label class="opt"><input type="radio" name="q11" value="Apenas em contingência"> Apenas em contingência</label>
+        <label class="opt"><input type="radio" name="q11" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q12">
+      <div class="q-head"><div class="num">12</div><div>
+        <h3>O cliente poderá comprar no balcão sem se cadastrar?</h3>
+        <p class="help">Define se o PDV poderá vender rapidamente como consumidor final.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q12" value="Sim, poderá comprar sem cadastro"> Sim, poderá comprar sem cadastro</label>
+        <label class="opt"><input type="radio" name="q12" value="Não, sempre precisa cadastro"> Não, sempre precisa cadastro</label>
+        <label class="opt"><input type="radio" name="q12" value="Cadastro obrigatório apenas em alguns casos"> Cadastro obrigatório apenas em alguns casos</label>
+        <label class="opt"><input type="radio" name="q12" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q13">
+      <div class="q-head"><div class="num">13</div><div>
+        <h3>Quais permissões precisam existir no PDV?</h3>
+        <p class="help">Ajuda a definir regras para caixa, gerente e administrador.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="q13" value="Operador pode aplicar desconto"> Operador pode aplicar desconto</label>
+        <label class="opt"><input type="checkbox" name="q13" value="Desconto precisa de autorização"> Desconto precisa de autorização</label>
+        <label class="opt"><input type="checkbox" name="q13" value="Operador pode cancelar item"> Operador pode cancelar item</label>
+        <label class="opt"><input type="checkbox" name="q13" value="Cancelamento de venda precisa de autorização"> Cancelamento de venda precisa de autorização</label>
+        <label class="opt"><input type="checkbox" name="q13" value="Devolução/troca precisa existir"> Devolução/troca precisa existir</label>
+        <label class="opt"><input type="checkbox" name="q13" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q14">
+      <div class="q-head"><div class="num">14</div><div>
+        <h3>Qual empresa deve ter loja online primeiro?</h3>
+        <p class="help">Define a prioridade do e-commerce.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q14" value="Banca do Mané"> Banca do Mané</label>
+        <label class="opt"><input type="radio" name="q14" value="Dijone Café"> Dijone Café</label>
+        <label class="opt"><input type="radio" name="q14" value="Casa Santos"> Casa Santos</label>
+        <label class="opt"><input type="radio" name="q14" value="As três juntas"> As três juntas</label>
+        <label class="opt"><input type="radio" name="q14" value="Ainda não definido"> Ainda não definido</label>
+      </div>
+    </article>
+
+    <article class="q" id="q15">
+      <div class="q-head"><div class="num">15</div><div>
+        <h3>Na loja online, quais opções o cliente deve ter?</h3>
+        <p class="help">Define retirada, entrega e formas de pagamento online.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="q15" value="Retirar na loja"> Retirar na loja</label>
+        <label class="opt"><input type="checkbox" name="q15" value="Receber por entrega"> Receber por entrega</label>
+        <label class="opt"><input type="checkbox" name="q15" value="Pagar online por PIX"> Pagar online por PIX</label>
+        <label class="opt"><input type="checkbox" name="q15" value="Pagar online por cartão"> Pagar online por cartão</label>
+        <label class="opt"><input type="checkbox" name="q15" value="Pagar na retirada/entrega"> Pagar na retirada/entrega</label>
+        <label class="opt"><input type="checkbox" name="q15" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q16">
+      <div class="q-head"><div class="num">16</div><div>
+        <h3>O crediário/fiado entra na primeira versão?</h3>
+        <p class="help">Essa decisão afeta clientes, limite de crédito e contas a receber.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q16" value="Sim, entra na primeira versão"> Sim, entra na primeira versão</label>
+        <label class="opt"><input type="radio" name="q16" value="Não entra"> Não entra</label>
+        <label class="opt"><input type="radio" name="q16" value="Fica para etapa futura"> Fica para etapa futura</label>
+        <label class="opt"><input type="radio" name="q16" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+    <article class="q" id="q17">
+      <div class="q-head"><div class="num">17</div><div>
+        <h3>Quais automações de WhatsApp fazem sentido?</h3>
+        <p class="help">Marque as mensagens automáticas que podem ajudar atendimento e vendas.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="q17" value="Promoções"> Promoções</label>
+        <label class="opt"><input type="checkbox" name="q17" value="Pedido recebido"> Pedido recebido</label>
+        <label class="opt"><input type="checkbox" name="q17" value="Pagamento confirmado"> Pagamento confirmado</label>
+        <label class="opt"><input type="checkbox" name="q17" value="Pedido em separação"> Pedido em separação</label>
+        <label class="opt"><input type="checkbox" name="q17" value="Pedido saiu para entrega"> Pedido saiu para entrega</label>
+        <label class="opt"><input type="checkbox" name="q17" value="Produto disponível novamente"> Produto disponível novamente</label>
+        <label class="opt"><input type="checkbox" name="q17" value="Resumo diário para gestores"> Resumo diário para gestores</label>
+        <label class="opt"><input type="checkbox" name="q17" value="Não desejamos agora"> Não desejamos agora</label>
+      </div>
+    </article>
+
+    <article class="q" id="q18">
+      <div class="q-head"><div class="num">18</div><div>
+        <h3>Quais relatórios são obrigatórios?</h3>
+        <p class="help">Escolha os relatórios fundamentais para gestão e conferência.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="q18" value="Vendas por dia"> Vendas por dia</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Vendas por mês"> Vendas por mês</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Vendas por empresa"> Vendas por empresa</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Produtos mais vendidos"> Produtos mais vendidos</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Estoque atual"> Estoque atual</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Estoque baixo"> Estoque baixo</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Caixa diário"> Caixa diário</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Vendas online"> Vendas online</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Clientes que mais compram"> Clientes que mais compram</label>
+        <label class="opt"><input type="checkbox" name="q18" value="Relatório para contabilidade"> Relatório para contabilidade</label>
+      </div>
+    </article>
+
+    <article class="q" id="q19">
+      <div class="q-head"><div class="num">19</div><div>
+        <h3>O que é mais importante na primeira versão?</h3>
+        <p class="help">Escolha a principal prioridade para orientar o desenvolvimento.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q19" value="Velocidade no caixa"> Velocidade no caixa</label>
+        <label class="opt"><input type="radio" name="q19" value="Controle de estoque"> Controle de estoque</label>
+        <label class="opt"><input type="radio" name="q19" value="Emissão fiscal"> Emissão fiscal</label>
+        <label class="opt"><input type="radio" name="q19" value="Loja online"> Loja online</label>
+        <label class="opt"><input type="radio" name="q19" value="Relatórios"> Relatórios</label>
+        <label class="opt"><input type="radio" name="q19" value="Controle financeiro"> Controle financeiro</label>
+        <label class="opt"><input type="radio" name="q19" value="WhatsApp e relacionamento com clientes"> WhatsApp e relacionamento com clientes</label>
+      </div>
+    </article>
+
+    <article class="q" id="q20">
+      <div class="q-head"><div class="num">20</div><div>
+        <h3>Deseja deixar alguma observação importante?</h3>
+        <p class="help">Use este espaço para explicar qualquer detalhe do negócio que não apareceu nas perguntas.</p>
+      </div></div>
+      <textarea name="q20" placeholder="Exemplo: produtos críticos, regras de desconto, entrega, estoque, fiscal, atendimento, prioridades..."></textarea>
+    </article>
+
+  </form>
+
+  <section id="reviewBox" class="panel hidden">
+    <h2>Revisão das respostas</h2>
+    <p class="small">Confira antes de enviar. Clique em Editar para voltar a qualquer pergunta.</p>
+    <table>
+      <thead><tr><th>#</th><th>Pergunta</th><th>Resposta</th><th></th></tr></thead>
+      <tbody id="reviewBody"></tbody>
+    </table>
+    <div class="actions" style="margin-top:16px">
+      <button type="button" class="danger" data-action="clear-answers">Limpar tudo</button>
+      <a href="#sendArea" class="btn-link primary js-prepare-send">Preparar Envio</a>
+    </div>
+  </section>
+
+  <span id="sendArea" class="send-anchor"></span>
+  <section id="sendBox" class="panel">
+    <h2>Finalizar Envio</h2>
+    <p class="small">Escolha como deseja enviar as respostas. O envio por e-mail será preparado para contato@sigmia.com.br.</p>
+    <div class="whats-form">
+      <textarea id="messageBox" class="msg-box" readonly placeholder="Suas respostas aparecerão aqui..."></textarea>
+      
+      <div class="actions" style="margin-top:16px">
+        <button type="button" class="btn-link primary" data-action="send-whatsapp">Enviar pelo WhatsApp</button>
+        <button type="button" class="btn-link" data-action="send-email">Enviar por E-mail</button>
+      </div>
+      <p id="sendStatus" class="status-note"></p>
+    </div>
+  </section>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+var STORAGE_KEY = 'sigmia_discovery_v8';
+var EMAIL_TO = 'contato@sigmia.com.br';
+var WHATSAPP_URL_LIMIT = 6500;
+var toastTimer;
+
+var questions = [
+  ['q01','As três empresas devem funcionar separadas dentro do sistema?'],
+  ['q02','Qual empresa deve começar primeiro?'],
+  ['q03','O que precisa estar pronto na primeira versão?'],
+  ['q04','Os produtos serão vendidos por unidade, por peso ou dos dois jeitos?'],
+  ['q05','Quais equipamentos o PDV deve considerar?'],
+  ['q06','O sistema deve impedir venda quando o produto estiver sem estoque?'],
+  ['q07','O estoque da loja física e da loja online será o mesmo?'],
+  ['q08','Quais locais de estoque precisam existir?'],
+  ['q09','O sistema precisa emitir cupom fiscal ou nota fiscal já na primeira versão?'],
+  ['q10','Qual documento fiscal o sistema deve emitir?'],
+  ['q11','Se houver falha na emissão fiscal, a venda pode continuar?'],
+  ['q12','O cliente poderá comprar no balcão sem se cadastrar?'],
+  ['q13','Quais permissões precisam existir no PDV?'],
+  ['q14','Qual empresa deve ter loja online primeiro?'],
+  ['q15','Na loja online, quais opções o cliente deve ter?'],
+  ['q16','O crediário/fiado entra na primeira versão?'],
+  ['q17','Quais automações de WhatsApp fazem sentido?'],
+  ['q18','Quais relatórios são obrigatórios?'],
+  ['q19','O que é mais importante na primeira versão?'],
+  ['q20','Deseja deixar alguma observação importante?']
+];
+
+/* ---------- DOM Helpers ---------- */
+function el(id){ return document.getElementById(id); }
+
+/* ---------- Read / Write Answers ---------- */
+function getAnswer(name){
+  var fields = Array.from(document.querySelectorAll('[name="' + name + '"]'));
+  if(!fields.length) return '';
+  if(fields[0].type === 'checkbox') return fields.filter(function(f){ return f.checked; }).map(function(f){ return f.value; });
+  if(fields[0].type === 'radio'){ var s = fields.find(function(f){ return f.checked; }); return s ? s.value : ''; }
+  return fields[0].value || '';
+}
+
+function setAnswer(name, value){
+  var fields = Array.from(document.querySelectorAll('[name="' + name + '"]'));
+  if(!fields.length) return;
+  if(fields[0].type === 'checkbox'){
+    fields.forEach(function(f){ f.checked = Array.isArray(value) && value.indexOf(f.value) !== -1; });
+  } else if(fields[0].type === 'radio'){
+    fields.forEach(function(f){ f.checked = (value === f.value); });
+  } else {
+    fields[0].value = value || '';
+  }
+}
+
+function collectAnswers(){
+  var data = {};
+  questions.forEach(function(q){ data[q[0]] = getAnswer(q[0]); });
+  return data;
+}
+
+function formatAnswer(v){
+  if(Array.isArray(v)) return v.length ? v.join(', ') : '';
+  return v || '';
+}
+
+/* ---------- Persistência ---------- */
+function saveAnswers(showToast){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(collectAnswers())); }catch(e){}
+  updateUI();
+  if(showToast) toast('Resposta salva');
+}
+
+function restoreAnswers(){
+  try{
+    var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    Object.keys(saved).forEach(function(k){ setAnswer(k, saved[k]); });
+  }catch(e){}
+  updateUI();
+}
+
+/* ---------- UI Update ---------- */
+function answeredCount(){
+  var data = collectAnswers();
+  return questions.filter(function(q){
+    var v = data[q[0]];
+    return Array.isArray(v) ? v.length > 0 : String(v || '').trim() !== '';
+  }).length;
+}
+
+function updateUI(){
+  var count   = answeredCount();
+  var percent = Math.round(count / questions.length * 100);
+  el('progressLabel').textContent  = count + ' de ' + questions.length + ' respondidas';
+  el('progressPercent').textContent = percent + '%';
+  el('progressFill').style.width    = percent + '%';
+  renderReview();
+  
+  var mb = el('messageBox');
+  if(mb) mb.value = buildWhatsAppMessage();
+}
+
+function renderReview(){
+  var data = collectAnswers();
+  el('reviewBody').innerHTML = questions.map(function(q, i){
+    var ans = formatAnswer(data[q[0]]) || 'Não respondida';
+    return '<tr><td>' + (i+1) + '</td><td>' + esc(q[1]) + '</td><td>' + esc(ans) + '</td>'
+         + '<td><button type="button" class="link" data-action="go-to" data-target="' + esc(q[0]) + '">Editar</button></td></tr>';
+  }).join('');
+}
+
+/* ---------- Navegação ---------- */
+function goTo(id){
+  var e = el(id);
+  if(!e) return;
+  e.scrollIntoView({ behavior:'smooth', block:'center' });
+  e.style.outline = '2px solid #22D3EE';
+  setTimeout(function(){ e.style.outline = ''; }, 1600);
+}
+
+function goNextPending(){
+  var data = collectAnswers();
+  var pending = null;
+  for(var i = 0; i < questions.length; i++){
+    var v = data[questions[i][0]];
+    if(Array.isArray(v) ? v.length === 0 : String(v || '').trim() === ''){ pending = questions[i]; break; }
+  }
+  if(!pending){ toast('Todas as perguntas foram respondidas'); return; }
+  goTo(pending[0]);
+}
+
+function toggleReview(){
+  var box = el('reviewBox');
+  if(box.classList.contains('hidden')){ 
+    box.classList.remove('hidden'); 
+    box.scrollIntoView({ behavior:'smooth' }); 
+  } else { 
+    box.classList.add('hidden'); 
+  }
+}
+
+function prepareSend(){
+  var box = el('sendBox');
+  if(!box) return;
+  box.classList.remove('hidden');
+  updateUI();
+  setSendStatus('');
+  setTimeout(function(){
+    box.scrollIntoView({ behavior:'smooth', block:'start' });
+  }, 30);
+  toast('Envio preparado');
+}
+
+function wirePrepareSendButtons(){
+  Array.from(document.querySelectorAll('.js-prepare-send')).forEach(function(btn){
+    btn.addEventListener('click', function(){
+      prepareSend();
+    });
+  });
+}
+
+function wireActionButtons(){
+  document.addEventListener('click', function(event){
+    var trigger = event.target.closest('[data-action]');
+    if(!trigger) return;
+
+    var action = trigger.getAttribute('data-action');
+
+    if(action === 'next-pending'){
+      goNextPending();
+    } else if(action === 'toggle-review'){
+      toggleReview();
+    } else if(action === 'clear-answers'){
+      clearAnswers();
+    } else if(action === 'send-whatsapp'){
+      sendWhatsApp();
+    } else if(action === 'send-email'){
+      sendEmail();
+    } else if(action === 'go-to'){
+      goTo(trigger.getAttribute('data-target'));
+    }
+  });
+}
+
+function wireFormEvents(){
+  var form = el('discoveryForm');
+  if(!form) return;
+  form.addEventListener('input', function(){
+    saveAnswers(false);
+  });
+  form.addEventListener('change', function(){
+    saveAnswers(true);
+  });
+}
+
+/* ---------- Construção do Texto ---------- */
+function buildWhatsAppMessage(){
+  var data = collectAnswers();
+  var lines = [];
+  var answered = 0;
+
+  lines.push('📋 *DISCOVERY SIGMIA COMMERCE OS*');
+  lines.push('--------------------------------');
+  lines.push('');
+
+  questions.forEach(function(q, i){
+    var ans = formatAnswer(data[q[0]]).trim();
+    if(!ans) return;
+    answered++;
+    lines.push('*' + (i+1) + '. ' + q[1] + '*');
+    lines.push('R: ' + ans);
+    lines.push('');
+  });
+
+  if(!answered){
+    lines.push('Nenhuma resposta preenchida ainda.');
+    lines.push('');
+  }
+
+  lines.push('--------------------------------');
+  lines.push('🕒 Gerado em: ' + new Date().toLocaleString('pt-BR'));
+  return lines.join('\n');
+}
+
+/* ---------- Envio / Compartilhamento ---------- */
+function hasAnyAnswer(){
+  if(answeredCount() > 0) return true;
+  alert('O questionário está vazio. Preencha pelo menos uma resposta antes de enviar.');
+  return false;
+}
+
+function syncMessageBox(){
+  var msg = buildWhatsAppMessage();
+  var mb = el('messageBox');
+  if(mb) mb.value = msg;
+  return msg;
+}
+
+function setSendStatus(msg){
+  var status = el('sendStatus');
+  if(status) status.textContent = msg || '';
+}
+
+function selectMessageText(){
+  var mb = el('messageBox');
+  if(!mb) return;
+  mb.removeAttribute('readonly');
+  mb.focus();
+  mb.select();
+  mb.setSelectionRange(0, mb.value.length);
+  mb.setAttribute('readonly', 'readonly');
+}
+
+function copyTextNow(msg){
+  var copied = false;
+  var mb = el('messageBox');
+  if(mb) mb.value = msg;
+  selectMessageText();
+
+  try {
+    copied = document.execCommand('copy');
+  } catch(e) {
+    copied = false;
+  }
+
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(msg).catch(function(){});
+  }
+
+  return copied;
+}
+
+function openWhatsApp(msg){
+  var encoded = encodeURIComponent(msg);
+  var useFullText = encoded.length <= WHATSAPP_URL_LIMIT;
+  var appUrl = useFullText ? 'whatsapp://send?text=' + encoded : 'whatsapp://send?text=';
+  var webUrl = useFullText ? 'https://wa.me/?text=' + encoded : 'https://wa.me/';
+
+  window.location.href = appUrl;
+
+  setTimeout(function(){
+    if(document.visibilityState !== 'hidden'){
+      window.location.href = webUrl;
+    }
+  }, 1200);
+}
+
+function sendWhatsApp(){
+  if(!hasAnyAnswer()) return;
+
+  prepareSend();
+  var msg = syncMessageBox();
+  var copied = copyTextNow(msg);
+  var encodedSize = encodeURIComponent(msg).length;
+
+  if(encodedSize > WHATSAPP_URL_LIMIT){
+    setSendStatus('Texto copiado. Como a resposta ficou grande, o WhatsApp será aberto sem preencher a mensagem automaticamente; selecione o contato e cole o texto.');
+  } else if(copied){
+    setSendStatus('Texto copiado e WhatsApp abrindo. Se a mensagem não aparecer preenchida, cole o texto na conversa.');
+  } else {
+    setSendStatus('O texto ficou selecionado. Se a cópia automática foi bloqueada, copie manualmente e cole no WhatsApp.');
+  }
+
+  openWhatsApp(msg);
+}
+
+function sendEmail(){
+  if(!hasAnyAnswer()) return;
+
+  prepareSend();
+  var msg = syncMessageBox();
+  var subject = 'Respostas Discovery SigmIA';
+  var copied = copyTextNow(msg);
+  var mailto = 'mailto:' + EMAIL_TO
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(msg);
+
+  if(copied){
+    setSendStatus('Texto copiado e e-mail abrindo para ' + EMAIL_TO + '. Se o corpo do e-mail não vier preenchido, cole o texto copiado.');
+  } else {
+    setSendStatus('E-mail abrindo para ' + EMAIL_TO + '. Se o corpo não vier preenchido, selecione e copie o texto acima manualmente.');
+  }
+
+  window.location.href = mailto;
+}
+
+/* ---------- Fallback: Cópia de Texto Simples ---------- */
+function copyMessageFallback(){
+  if(!hasAnyAnswer()) return;
+
+  var msg = syncMessageBox();
+  selectMessageText();
+
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(msg).then(function(){
+      setSendStatus('Texto copiado. Agora abra o WhatsApp e cole na conversa.');
+      toast('Texto copiado');
+    }).catch(function(){
+      if(document.execCommand('copy')){
+        setSendStatus('Texto copiado pelo modo compatível. Agora cole no WhatsApp.');
+        toast('Texto copiado');
+      } else {
+        setSendStatus('Seu navegador bloqueou a cópia automática. O texto está selecionado para copiar manualmente.');
+      }
+    });
+  } else {
+    try {
+      document.execCommand('copy');
+      setSendStatus('Texto copiado. Agora abra o WhatsApp e cole na conversa.');
+      toast('Texto copiado');
+    } catch(e) {
+      setSendStatus('Seu navegador bloqueou a cópia automática. O texto está selecionado para copiar manualmente.');
+    }
+  }
+}
+
+/* ---------- Utilitários ---------- */
+function clearAnswers(){
+  if(!confirm('Apagar todas as respostas salvas neste dispositivo?')) return;
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+  questions.forEach(function(q){
+    var fields = Array.from(document.querySelectorAll('[name="' + q[0] + '"]'));
+    if(!fields.length) return;
+    if(fields[0].type === 'checkbox' || fields[0].type === 'radio'){
+      fields.forEach(function(f){ f.checked = false; });
+    } else {
+      fields[0].value = '';
+    }
+  });
+  updateUI();
+  toast('Respostas apagadas');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function toast(msg){
+  var t = el('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.style.display = 'none'; }, 2500);
+}
+
+function esc(s){
+  return String(s || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
+/* ---------- Inicialização ---------- */
+document.addEventListener('DOMContentLoaded', function(){
+  document.documentElement.classList.add('js-ready');
+  restoreAnswers();
+  wireFormEvents();
+  wirePrepareSendButtons();
+  wireActionButtons();
+  if(window.location.hash === '#sendArea' || window.location.hash === '#sendBox') prepareSend();
+});
+</script>
+</body>
+</html>
