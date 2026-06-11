@@ -771,6 +771,48 @@ var questions = [
   ['q39','Deseja deixar alguma observação importante?']
 ];
 
+var questionShortLabels = [
+  'Estoque zerado',
+  'Estoque de baixa',
+  'Sem saldo registrado',
+  'Quantidade decimal',
+  'Lote e validade',
+  'Produto vencido',
+  'Kit/combo/produto composto',
+  'Serviços sem estoque',
+  'Preço do PDV',
+  'Promoção automática',
+  'Alterar preço no caixa',
+  'Desconto no caixa',
+  'Autorização de desconto',
+  'Cálculo de troco',
+  'Troco em dinheiro',
+  'Pagamento misto',
+  'Cancelamento e estoque',
+  'Cancelamento e lote',
+  'Cancelamento e caixa',
+  'CPF/CNPJ do cliente',
+  'CPF/CNPJ por valor',
+  'Vendedor obrigatório',
+  'Comissões',
+  'Produto inativo',
+  'Busca de produto inativo',
+  'Códigos únicos',
+  'Produto sem preço',
+  'Preço manual',
+  'Casas decimais',
+  'Arredondamento',
+  'Caixa offline',
+  'Conflito offline',
+  'Emissão fiscal automática',
+  'Venda sem nota na hora',
+  'Falha na emissão fiscal',
+  'Dados de cartão/Pix',
+  'Estoque mínimo',
+  'Custo médio',
+  'Observações'
+];
+
 /* ---------- DOM Helpers ---------- */
 function el(id){ return document.getElementById(id); }
 
@@ -839,7 +881,7 @@ function updateUI(){
   renderReview();
   
   var mb = el('messageBox');
-  if(mb) mb.value = buildWhatsAppMessage();
+  if(mb) mb.value = buildWhatsAppMessage(true);
 }
 
 function renderReview(){
@@ -936,21 +978,21 @@ function wireFormEvents(){
 }
 
 /* ---------- Construção do Texto ---------- */
-function buildWhatsAppMessage(){
+function buildWhatsAppMessage(compact){
   var data = collectAnswers();
   var lines = [];
   var answered = 0;
 
-  lines.push('📋 *DISCOVERY SIGMIA COMMERCE OS*');
-  lines.push('--------------------------------');
+  lines.push('*DISCOVERY SIGMIA COMMERCE OS*');
+  lines.push(compact ? 'Respostas resumidas para WhatsApp' : 'Respostas completas');
   lines.push('');
 
   questions.forEach(function(q, i){
     var ans = formatAnswer(data[q[0]]).trim();
     if(!ans) return;
     answered++;
-    lines.push('*' + (i+1) + '. ' + q[1] + '*');
-    lines.push('R: ' + ans);
+    lines.push('*' + (i+1) + '. ' + (compact ? questionShortLabels[i] : q[1]) + '*');
+    lines.push(ans);
     lines.push('');
   });
 
@@ -959,8 +1001,7 @@ function buildWhatsAppMessage(){
     lines.push('');
   }
 
-  lines.push('--------------------------------');
-  lines.push('🕒 Gerado em: ' + new Date().toLocaleString('pt-BR'));
+  lines.push('Gerado em: ' + new Date().toLocaleString('pt-BR'));
   return lines.join('\n');
 }
 
@@ -971,8 +1012,8 @@ function hasAnyAnswer(){
   return false;
 }
 
-function syncMessageBox(){
-  var msg = buildWhatsAppMessage();
+function syncMessageBox(compact){
+  var msg = buildWhatsAppMessage(compact);
   var mb = el('messageBox');
   if(mb) mb.value = msg;
   return msg;
@@ -1031,7 +1072,7 @@ function sendWhatsApp(){
   if(!hasAnyAnswer()) return;
 
   prepareSend();
-  var msg = syncMessageBox();
+  var msg = syncMessageBox(true);
   var copied = copyTextNow(msg);
   var encodedSize = encodeURIComponent(msg).length;
 
@@ -1050,7 +1091,7 @@ function sendEmail(){
   if(!hasAnyAnswer()) return;
 
   prepareSend();
-  var msg = syncMessageBox();
+  var msg = syncMessageBox(false);
   var subject = 'Respostas Discovery SigmIA';
   var copied = copyTextNow(msg);
   var mailto = 'mailto:' + EMAIL_TO
