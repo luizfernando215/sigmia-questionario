@@ -105,7 +105,7 @@
   <div class="toolbar">
     <div class="progress">
       <div class="progress-top">
-        <span id="progressLabel">0 de 20 respondidas</span>
+        <span id="progressLabel">0 de 39 respondidas</span>
         <span id="progressPercent">0%</span>
       </div>
       <div class="bar"><span id="progressFill"></span></div>
@@ -121,284 +121,572 @@
 
     <article class="q" id="q01">
       <div class="q-head"><div class="num">1</div><div>
-        <h3>As três empresas devem funcionar separadas dentro do sistema?</h3>
-        <p class="help">Define se Banca do Mané, Dijone Café e Casa Santos terão dados independentes.</p>
+        <h3>Quando um produto acaba no estoque, o sistema deve impedir a venda ou permitir mesmo assim?</h3>
+        <p class="help">Define a regra principal para venda com estoque zerado.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q01" value="Sim, totalmente separadas"> Sim, totalmente separadas</label>
-        <label class="opt"><input type="radio" name="q01" value="Não, tudo junto"> Não, tudo junto</label>
-        <label class="opt"><input type="radio" name="q01" value="Parcialmente separadas"> Parcialmente separadas</label>
+        <label class="opt"><input type="radio" name="q01" value="Impedir a venda"> Impedir a venda</label>
+        <label class="opt"><input type="radio" name="q01" value="Permitir mesmo assim"> Permitir mesmo assim</label>
+        <label class="opt"><input type="radio" name="q01" value="Permitir apenas com autorização"> Permitir apenas com autorização</label>
+        <label class="opt"><input type="radio" name="q01" value="Depende do produto"> Depende do produto</label>
         <label class="opt"><input type="radio" name="q01" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q02">
       <div class="q-head"><div class="num">2</div><div>
-        <h3>Qual empresa deve começar primeiro?</h3>
-        <p class="help">Escolha qual operação deve receber o primeiro MVP funcional.</p>
+        <h3>Se a empresa tiver mais de um estoque, de qual estoque o caixa deve tirar os produtos vendidos?</h3>
+        <p class="help">Define se o PDV usa sempre um estoque padrão ou se o operador escolhe.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q02" value="Banca do Mané"> Banca do Mané</label>
-        <label class="opt"><input type="radio" name="q02" value="Dijone Café"> Dijone Café</label>
-        <label class="opt"><input type="radio" name="q02" value="Casa Santos"> Casa Santos</label>
-        <label class="opt"><input type="radio" name="q02" value="As três juntas"> As três juntas</label>
-        <label class="opt"><input type="radio" name="q02" value="Ainda não definido"> Ainda não definido</label>
+        <label class="opt"><input type="radio" name="q02" value="Sempre do estoque principal da loja"> Sempre do estoque principal da loja</label>
+        <label class="opt"><input type="radio" name="q02" value="Do estoque vinculado ao caixa"> Do estoque vinculado ao caixa</label>
+        <label class="opt"><input type="radio" name="q02" value="O operador escolhe o estoque na venda"> O operador escolhe o estoque na venda</label>
+        <label class="opt"><input type="radio" name="q02" value="Depende do produto"> Depende do produto</label>
+        <label class="opt"><input type="radio" name="q02" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
+
 
     <article class="q" id="q03">
       <div class="q-head"><div class="num">3</div><div>
-        <h3>O que precisa estar pronto na primeira versão?</h3>
-        <p class="help">Marque tudo que for indispensável para considerar a primeira entrega utilizável.</p>
+        <h3>Se o produto estiver sem saldo registrado no estoque, ainda pode ser vendido?</h3>
+        <p class="help">Regra para produtos cadastrados sem quantidade disponível no sistema.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="checkbox" name="q03" value="Vender no balcão"> Vender no balcão</label>
-        <label class="opt"><input type="checkbox" name="q03" value="Controlar estoque"> Controlar estoque</label>
-        <label class="opt"><input type="checkbox" name="q03" value="Controlar caixa"> Controlar caixa</label>
-        <label class="opt"><input type="checkbox" name="q03" value="Emitir cupom fiscal"> Emitir cupom fiscal</label>
-        <label class="opt"><input type="checkbox" name="q03" value="Cadastrar produtos"> Cadastrar produtos</label>
-        <label class="opt"><input type="checkbox" name="q03" value="Cadastrar clientes"> Cadastrar clientes</label>
-        <label class="opt"><input type="checkbox" name="q03" value="Relatórios básicos"> Relatórios básicos</label>
+        <label class="opt"><input type="radio" name="q03" value="Sim, pode vender"> Sim, pode vender</label>
+        <label class="opt"><input type="radio" name="q03" value="Não, deve bloquear"> Não, deve bloquear</label>
+        <label class="opt"><input type="radio" name="q03" value="Pode vender com autorização"> Pode vender com autorização</label>
+        <label class="opt"><input type="radio" name="q03" value="Depende do tipo de produto"> Depende do tipo de produto</label>
+        <label class="opt"><input type="radio" name="q03" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q04">
       <div class="q-head"><div class="num">4</div><div>
-        <h3>Os produtos serão vendidos por unidade, por peso ou dos dois jeitos?</h3>
-        <p class="help">Exemplo: café embalado por unidade, frutas por peso, queijo por peso.</p>
+        <h3>Para produtos vendidos por peso, como queijo, carne ou granel, o caixa pode informar qualquer quantidade decimal, como 0,350 kg?</h3>
+        <p class="help">Define a liberdade de digitação para produtos pesáveis.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q04" value="Apenas por unidade"> Apenas por unidade</label>
-        <label class="opt"><input type="radio" name="q04" value="Apenas por peso"> Apenas por peso</label>
-        <label class="opt"><input type="radio" name="q04" value="Por unidade e por peso"> Por unidade e por peso</label>
+        <label class="opt"><input type="radio" name="q04" value="Sim, pode informar qualquer decimal permitido"> Sim, pode informar qualquer decimal permitido</label>
+        <label class="opt"><input type="radio" name="q04" value="Não, deve usar apenas peso vindo da balança"> Não, deve usar apenas peso vindo da balança</label>
+        <label class="opt"><input type="radio" name="q04" value="Pode informar manualmente com autorização"> Pode informar manualmente com autorização</label>
+        <label class="opt"><input type="radio" name="q04" value="Depende do produto"> Depende do produto</label>
         <label class="opt"><input type="radio" name="q04" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q05">
       <div class="q-head"><div class="num">5</div><div>
-        <h3>Quais equipamentos o PDV deve considerar?</h3>
-        <p class="help">Marque os equipamentos que existem ou provavelmente serão usados.</p>
+        <h3>Quando um produto tem lote ou validade, o caixa deve escolher o lote manualmente ou o sistema escolhe sozinho o lote mais antigo?</h3>
+        <p class="help">Define a baixa por lote e validade no PDV.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="checkbox" name="q05" value="Leitor de código de barras"> Leitor de código de barras</label>
-        <label class="opt"><input type="checkbox" name="q05" value="Balança"> Balança</label>
-        <label class="opt"><input type="checkbox" name="q05" value="Impressora térmica"> Impressora térmica</label>
-        <label class="opt"><input type="checkbox" name="q05" value="Máquina de cartão"> Máquina de cartão</label>
-        <label class="opt"><input type="checkbox" name="q05" value="Nenhum equipamento externo inicialmente"> Nenhum equipamento externo inicialmente</label>
-        <label class="opt"><input type="checkbox" name="q05" value="Ainda não sei"> Ainda não sei</label>
+        <label class="opt"><input type="radio" name="q05" value="Sistema escolhe automaticamente o lote mais antigo"> Sistema escolhe automaticamente o lote mais antigo</label>
+        <label class="opt"><input type="radio" name="q05" value="Caixa escolhe o lote manualmente"> Caixa escolhe o lote manualmente</label>
+        <label class="opt"><input type="radio" name="q05" value="Sistema sugere e o caixa pode alterar"> Sistema sugere e o caixa pode alterar</label>
+        <label class="opt"><input type="radio" name="q05" value="Não vamos controlar lote/validade no caixa"> Não vamos controlar lote/validade no caixa</label>
+        <label class="opt"><input type="radio" name="q05" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q06">
       <div class="q-head"><div class="num">6</div><div>
-        <h3>O sistema deve impedir venda quando o produto estiver sem estoque?</h3>
-        <p class="help">Essa regra afeta o PDV, o e-commerce e o controle de estoque.</p>
+        <h3>Produto vencido pode ser vendido ou o sistema deve bloquear?</h3>
+        <p class="help">Define a regra para validade expirada.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q06" value="Sim, deve impedir"> Sim, deve impedir</label>
-        <label class="opt"><input type="radio" name="q06" value="Não, pode vender mesmo sem estoque"> Não, pode vender mesmo sem estoque</label>
+        <label class="opt"><input type="radio" name="q06" value="Bloquear sempre"> Bloquear sempre</label>
+        <label class="opt"><input type="radio" name="q06" value="Permitir com aviso"> Permitir com aviso</label>
+        <label class="opt"><input type="radio" name="q06" value="Permitir apenas com autorização"> Permitir apenas com autorização</label>
         <label class="opt"><input type="radio" name="q06" value="Depende do produto"> Depende do produto</label>
         <label class="opt"><input type="radio" name="q06" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q07">
       <div class="q-head"><div class="num">7</div><div>
-        <h3>O estoque da loja física e da loja online será o mesmo?</h3>
-        <p class="help">Define se balcão, WhatsApp e loja online compartilharão o mesmo saldo.</p>
+        <h3>Quando o produto é um kit, combo ou produto composto, o estoque deve baixar o kit pronto, os itens que formam o kit, ou os dois?</h3>
+        <p class="help">Define como combos e produtos compostos movimentam estoque.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q07" value="Sim, será o mesmo estoque"> Sim, será o mesmo estoque</label>
-        <label class="opt"><input type="radio" name="q07" value="Não, serão estoques separados"> Não, serão estoques separados</label>
-        <label class="opt"><input type="radio" name="q07" value="Depende da empresa"> Depende da empresa</label>
+        <label class="opt"><input type="radio" name="q07" value="Baixar apenas o kit pronto"> Baixar apenas o kit pronto</label>
+        <label class="opt"><input type="radio" name="q07" value="Baixar apenas os itens que formam o kit"> Baixar apenas os itens que formam o kit</label>
+        <label class="opt"><input type="radio" name="q07" value="Baixar o kit e os itens"> Baixar o kit e os itens</label>
+        <label class="opt"><input type="radio" name="q07" value="Depende do tipo de kit"> Depende do tipo de kit</label>
         <label class="opt"><input type="radio" name="q07" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q08">
       <div class="q-head"><div class="num">8</div><div>
-        <h3>Quais locais de estoque precisam existir?</h3>
-        <p class="help">Marque os locais que fazem sentido para as empresas.</p>
+        <h3>Serviços, como entrega, manutenção ou taxa, podem ser vendidos sem mexer no estoque?</h3>
+        <p class="help">Define se serviços entram na venda sem movimentação física.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="checkbox" name="q08" value="Loja/box"> Loja/box</label>
-        <label class="opt"><input type="checkbox" name="q08" value="Depósito"> Depósito</label>
-        <label class="opt"><input type="checkbox" name="q08" value="Câmara fria"> Câmara fria</label>
-        <label class="opt"><input type="checkbox" name="q08" value="Cozinha/produção"> Cozinha/produção</label>
-        <label class="opt"><input type="checkbox" name="q08" value="Estoque online"> Estoque online</label>
-        <label class="opt"><input type="checkbox" name="q08" value="Apenas um estoque simples"> Apenas um estoque simples</label>
-        <label class="opt"><input type="checkbox" name="q08" value="Ainda não sei"> Ainda não sei</label>
+        <label class="opt"><input type="radio" name="q08" value="Sim, serviços não movimentam estoque"> Sim, serviços não movimentam estoque</label>
+        <label class="opt"><input type="radio" name="q08" value="Não, tudo precisa movimentar estoque"> Não, tudo precisa movimentar estoque</label>
+        <label class="opt"><input type="radio" name="q08" value="Depende do serviço"> Depende do serviço</label>
+        <label class="opt"><input type="radio" name="q08" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q09">
       <div class="q-head"><div class="num">9</div><div>
-        <h3>O sistema precisa emitir cupom fiscal ou nota fiscal já na primeira versão?</h3>
-        <p class="help">Define se a integração fiscal será prioridade inicial.</p>
+        <h3>O preço usado no caixa será sempre o preço cadastrado para o PDV?</h3>
+        <p class="help">Define se o PDV segue uma tabela de preço fixa.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q09" value="Sim, precisa emitir na primeira versão"> Sim, precisa emitir na primeira versão</label>
-        <label class="opt"><input type="radio" name="q09" value="Não, pode ficar para depois"> Não, pode ficar para depois</label>
-        <label class="opt"><input type="radio" name="q09" value="Usaremos o sistema atual por enquanto"> Usaremos o sistema atual por enquanto</label>
+        <label class="opt"><input type="radio" name="q09" value="Sim, sempre o preço cadastrado do PDV"> Sim, sempre o preço cadastrado do PDV</label>
+        <label class="opt"><input type="radio" name="q09" value="Não, pode usar outras tabelas"> Não, pode usar outras tabelas</label>
+        <label class="opt"><input type="radio" name="q09" value="Pode variar por empresa ou caixa"> Pode variar por empresa ou caixa</label>
+        <label class="opt"><input type="radio" name="q09" value="Pode variar por cliente"> Pode variar por cliente</label>
         <label class="opt"><input type="radio" name="q09" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q10">
       <div class="q-head"><div class="num">10</div><div>
-        <h3>Qual documento fiscal o sistema deve emitir?</h3>
-        <p class="help">Escolha a opção mais próxima da necessidade atual.</p>
+        <h3>Promoções com data de início e fim devem ser aplicadas automaticamente no caixa?</h3>
+        <p class="help">Define se promoções entram sozinhas no período configurado.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q10" value="NFC-e para venda presencial"> NFC-e para venda presencial</label>
-        <label class="opt"><input type="radio" name="q10" value="NF-e"> NF-e</label>
-        <label class="opt"><input type="radio" name="q10" value="NFC-e e NF-e"> NFC-e e NF-e</label>
-        <label class="opt"><input type="radio" name="q10" value="Ainda não sei / contador precisa confirmar"> Ainda não sei / contador precisa confirmar</label>
+        <label class="opt"><input type="radio" name="q10" value="Sim, aplicar automaticamente"> Sim, aplicar automaticamente</label>
+        <label class="opt"><input type="radio" name="q10" value="Não, operador escolhe a promoção"> Não, operador escolhe a promoção</label>
+        <label class="opt"><input type="radio" name="q10" value="Aplicar automaticamente, mas permitir remover"> Aplicar automaticamente, mas permitir remover</label>
+        <label class="opt"><input type="radio" name="q10" value="Não teremos promoção por data inicialmente"> Não teremos promoção por data inicialmente</label>
+        <label class="opt"><input type="radio" name="q10" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q11">
       <div class="q-head"><div class="num">11</div><div>
-        <h3>Se houver falha na emissão fiscal, a venda pode continuar?</h3>
-        <p class="help">Exemplo: internet instável, erro da SEFAZ ou emissão em contingência.</p>
+        <h3>O operador do caixa pode mudar o preço do produto na hora da venda?</h3>
+        <p class="help">Define permissão para alteração manual de preço.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q11" value="Sim, pode continuar"> Sim, pode continuar</label>
-        <label class="opt"><input type="radio" name="q11" value="Não, deve bloquear a venda"> Não, deve bloquear a venda</label>
-        <label class="opt"><input type="radio" name="q11" value="Apenas em contingência"> Apenas em contingência</label>
+        <label class="opt"><input type="radio" name="q11" value="Não, nunca pode mudar"> Não, nunca pode mudar</label>
+        <label class="opt"><input type="radio" name="q11" value="Sim, pode mudar livremente"> Sim, pode mudar livremente</label>
+        <label class="opt"><input type="radio" name="q11" value="Pode mudar dentro de um limite"> Pode mudar dentro de um limite</label>
+        <label class="opt"><input type="radio" name="q11" value="Pode mudar apenas com autorização"> Pode mudar apenas com autorização</label>
         <label class="opt"><input type="radio" name="q11" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q12">
       <div class="q-head"><div class="num">12</div><div>
-        <h3>O cliente poderá comprar no balcão sem se cadastrar?</h3>
-        <p class="help">Define se o PDV poderá vender rapidamente como consumidor final.</p>
+        <h3>O operador pode dar desconto? Existe um limite máximo de desconto?</h3>
+        <p class="help">Define regra de desconto no PDV.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q12" value="Sim, poderá comprar sem cadastro"> Sim, poderá comprar sem cadastro</label>
-        <label class="opt"><input type="radio" name="q12" value="Não, sempre precisa cadastro"> Não, sempre precisa cadastro</label>
-        <label class="opt"><input type="radio" name="q12" value="Cadastro obrigatório apenas em alguns casos"> Cadastro obrigatório apenas em alguns casos</label>
+        <label class="opt"><input type="radio" name="q12" value="Não pode dar desconto"> Não pode dar desconto</label>
+        <label class="opt"><input type="radio" name="q12" value="Pode dar desconto sem limite"> Pode dar desconto sem limite</label>
+        <label class="opt"><input type="radio" name="q12" value="Pode dar desconto com limite percentual"> Pode dar desconto com limite percentual</label>
+        <label class="opt"><input type="radio" name="q12" value="Pode dar desconto com limite por valor"> Pode dar desconto com limite por valor</label>
         <label class="opt"><input type="radio" name="q12" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q13">
       <div class="q-head"><div class="num">13</div><div>
-        <h3>Quais permissões precisam existir no PDV?</h3>
-        <p class="help">Ajuda a definir regras para caixa, gerente e administrador.</p>
+        <h3>Para desconto maior, precisa pedir autorização de gerente ou supervisor?</h3>
+        <p class="help">Define aprovação para exceções de desconto.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="checkbox" name="q13" value="Operador pode aplicar desconto"> Operador pode aplicar desconto</label>
-        <label class="opt"><input type="checkbox" name="q13" value="Desconto precisa de autorização"> Desconto precisa de autorização</label>
-        <label class="opt"><input type="checkbox" name="q13" value="Operador pode cancelar item"> Operador pode cancelar item</label>
-        <label class="opt"><input type="checkbox" name="q13" value="Cancelamento de venda precisa de autorização"> Cancelamento de venda precisa de autorização</label>
-        <label class="opt"><input type="checkbox" name="q13" value="Devolução/troca precisa existir"> Devolução/troca precisa existir</label>
-        <label class="opt"><input type="checkbox" name="q13" value="Ainda não sei"> Ainda não sei</label>
+        <label class="opt"><input type="radio" name="q13" value="Sim, sempre precisa autorização"> Sim, sempre precisa autorização</label>
+        <label class="opt"><input type="radio" name="q13" value="Não precisa autorização"> Não precisa autorização</label>
+        <label class="opt"><input type="radio" name="q13" value="Precisa apenas acima de um limite"> Precisa apenas acima de um limite</label>
+        <label class="opt"><input type="radio" name="q13" value="Depende do operador"> Depende do operador</label>
+        <label class="opt"><input type="radio" name="q13" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
+
 
     <article class="q" id="q14">
       <div class="q-head"><div class="num">14</div><div>
-        <h3>Qual empresa deve ter loja online primeiro?</h3>
-        <p class="help">Define a prioridade do e-commerce.</p>
+        <h3>Se o cliente pagar mais do que o valor da compra, o sistema deve calcular troco?</h3>
+        <p class="help">Define se o PDV calcula troco automaticamente.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q14" value="Banca do Mané"> Banca do Mané</label>
-        <label class="opt"><input type="radio" name="q14" value="Dijone Café"> Dijone Café</label>
-        <label class="opt"><input type="radio" name="q14" value="Casa Santos"> Casa Santos</label>
-        <label class="opt"><input type="radio" name="q14" value="As três juntas"> As três juntas</label>
-        <label class="opt"><input type="radio" name="q14" value="Ainda não definido"> Ainda não definido</label>
+        <label class="opt"><input type="radio" name="q14" value="Sim, deve calcular troco"> Sim, deve calcular troco</label>
+        <label class="opt"><input type="radio" name="q14" value="Não, não precisa calcular troco"> Não, não precisa calcular troco</label>
+        <label class="opt"><input type="radio" name="q14" value="Calcular apenas para dinheiro"> Calcular apenas para dinheiro</label>
+        <label class="opt"><input type="radio" name="q14" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
+
 
     <article class="q" id="q15">
       <div class="q-head"><div class="num">15</div><div>
-        <h3>Na loja online, quais opções o cliente deve ter?</h3>
-        <p class="help">Define retirada, entrega e formas de pagamento online.</p>
+        <h3>O troco só pode acontecer em pagamento com dinheiro?</h3>
+        <p class="help">Define se outras formas de pagamento podem gerar troco ou crédito.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="checkbox" name="q15" value="Retirar na loja"> Retirar na loja</label>
-        <label class="opt"><input type="checkbox" name="q15" value="Receber por entrega"> Receber por entrega</label>
-        <label class="opt"><input type="checkbox" name="q15" value="Pagar online por PIX"> Pagar online por PIX</label>
-        <label class="opt"><input type="checkbox" name="q15" value="Pagar online por cartão"> Pagar online por cartão</label>
-        <label class="opt"><input type="checkbox" name="q15" value="Pagar na retirada/entrega"> Pagar na retirada/entrega</label>
-        <label class="opt"><input type="checkbox" name="q15" value="Ainda não sei"> Ainda não sei</label>
+        <label class="opt"><input type="radio" name="q15" value="Sim, troco somente em dinheiro"> Sim, troco somente em dinheiro</label>
+        <label class="opt"><input type="radio" name="q15" value="Não, pode ocorrer em outras formas"> Não, pode ocorrer em outras formas</label>
+        <label class="opt"><input type="radio" name="q15" value="Outras formas viram crédito para o cliente"> Outras formas viram crédito para o cliente</label>
+        <label class="opt"><input type="radio" name="q15" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q16">
       <div class="q-head"><div class="num">16</div><div>
-        <h3>O crediário/fiado entra na primeira versão?</h3>
-        <p class="help">Essa decisão afeta clientes, limite de crédito e contas a receber.</p>
+        <h3>Uma venda pode ser paga com mais de uma forma de pagamento, por exemplo parte em dinheiro e parte no cartão?</h3>
+        <p class="help">Define pagamento misto na venda.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q16" value="Sim, entra na primeira versão"> Sim, entra na primeira versão</label>
-        <label class="opt"><input type="radio" name="q16" value="Não entra"> Não entra</label>
-        <label class="opt"><input type="radio" name="q16" value="Fica para etapa futura"> Fica para etapa futura</label>
+        <label class="opt"><input type="radio" name="q16" value="Sim, pode pagamento misto"> Sim, pode pagamento misto</label>
+        <label class="opt"><input type="radio" name="q16" value="Não, apenas uma forma por venda"> Não, apenas uma forma por venda</label>
+        <label class="opt"><input type="radio" name="q16" value="Pode misturar somente algumas formas"> Pode misturar somente algumas formas</label>
         <label class="opt"><input type="radio" name="q16" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q17">
       <div class="q-head"><div class="num">17</div><div>
-        <h3>Quais automações de WhatsApp fazem sentido?</h3>
-        <p class="help">Marque as mensagens automáticas que podem ajudar atendimento e vendas.</p>
+        <h3>Quando uma venda for cancelada, os produtos devem voltar automaticamente para o estoque?</h3>
+        <p class="help">Define a reversão de estoque no cancelamento.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="checkbox" name="q17" value="Promoções"> Promoções</label>
-        <label class="opt"><input type="checkbox" name="q17" value="Pedido recebido"> Pedido recebido</label>
-        <label class="opt"><input type="checkbox" name="q17" value="Pagamento confirmado"> Pagamento confirmado</label>
-        <label class="opt"><input type="checkbox" name="q17" value="Pedido em separação"> Pedido em separação</label>
-        <label class="opt"><input type="checkbox" name="q17" value="Pedido saiu para entrega"> Pedido saiu para entrega</label>
-        <label class="opt"><input type="checkbox" name="q17" value="Produto disponível novamente"> Produto disponível novamente</label>
-        <label class="opt"><input type="checkbox" name="q17" value="Resumo diário para gestores"> Resumo diário para gestores</label>
-        <label class="opt"><input type="checkbox" name="q17" value="Não desejamos agora"> Não desejamos agora</label>
+        <label class="opt"><input type="radio" name="q17" value="Sim, voltar automaticamente"> Sim, voltar automaticamente</label>
+        <label class="opt"><input type="radio" name="q17" value="Não, ajuste manual"> Não, ajuste manual</label>
+        <label class="opt"><input type="radio" name="q17" value="Voltar apenas com autorização"> Voltar apenas com autorização</label>
+        <label class="opt"><input type="radio" name="q17" value="Depende do tipo de venda"> Depende do tipo de venda</label>
+        <label class="opt"><input type="radio" name="q17" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
+
 
     <article class="q" id="q18">
       <div class="q-head"><div class="num">18</div><div>
-        <h3>Quais relatórios são obrigatórios?</h3>
-        <p class="help">Escolha os relatórios fundamentais para gestão e conferência.</p>
+        <h3>Se a venda usou um lote específico, o produto deve voltar para o mesmo lote quando cancelar?</h3>
+        <p class="help">Define a reversão de lote no cancelamento.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="checkbox" name="q18" value="Vendas por dia"> Vendas por dia</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Vendas por mês"> Vendas por mês</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Vendas por empresa"> Vendas por empresa</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Produtos mais vendidos"> Produtos mais vendidos</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Estoque atual"> Estoque atual</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Estoque baixo"> Estoque baixo</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Caixa diário"> Caixa diário</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Vendas online"> Vendas online</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Clientes que mais compram"> Clientes que mais compram</label>
-        <label class="opt"><input type="checkbox" name="q18" value="Relatório para contabilidade"> Relatório para contabilidade</label>
+        <label class="opt"><input type="radio" name="q18" value="Sim, voltar para o mesmo lote"> Sim, voltar para o mesmo lote</label>
+        <label class="opt"><input type="radio" name="q18" value="Não, voltar para lote padrão"> Não, voltar para lote padrão</label>
+        <label class="opt"><input type="radio" name="q18" value="Operador escolhe o lote de retorno"> Operador escolhe o lote de retorno</label>
+        <label class="opt"><input type="radio" name="q18" value="Não vamos controlar lote no cancelamento"> Não vamos controlar lote no cancelamento</label>
+        <label class="opt"><input type="radio" name="q18" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
+
 
     <article class="q" id="q19">
       <div class="q-head"><div class="num">19</div><div>
-        <h3>O que é mais importante na primeira versão?</h3>
-        <p class="help">Escolha a principal prioridade para orientar o desenvolvimento.</p>
+        <h3>Ao cancelar uma venda, o valor também deve ser estornado do caixa automaticamente?</h3>
+        <p class="help">Define o reflexo financeiro do cancelamento.</p>
       </div></div>
       <div class="opts">
-        <label class="opt"><input type="radio" name="q19" value="Velocidade no caixa"> Velocidade no caixa</label>
-        <label class="opt"><input type="radio" name="q19" value="Controle de estoque"> Controle de estoque</label>
-        <label class="opt"><input type="radio" name="q19" value="Emissão fiscal"> Emissão fiscal</label>
-        <label class="opt"><input type="radio" name="q19" value="Loja online"> Loja online</label>
-        <label class="opt"><input type="radio" name="q19" value="Relatórios"> Relatórios</label>
-        <label class="opt"><input type="radio" name="q19" value="Controle financeiro"> Controle financeiro</label>
-        <label class="opt"><input type="radio" name="q19" value="WhatsApp e relacionamento com clientes"> WhatsApp e relacionamento com clientes</label>
+        <label class="opt"><input type="radio" name="q19" value="Sim, estornar automaticamente"> Sim, estornar automaticamente</label>
+        <label class="opt"><input type="radio" name="q19" value="Não, estorno manual"> Não, estorno manual</label>
+        <label class="opt"><input type="radio" name="q19" value="Estornar apenas com autorização"> Estornar apenas com autorização</label>
+        <label class="opt"><input type="radio" name="q19" value="Depende da forma de pagamento"> Depende da forma de pagamento</label>
+        <label class="opt"><input type="radio" name="q19" value="Ainda não sei"> Ainda não sei</label>
       </div>
     </article>
 
+
     <article class="q" id="q20">
       <div class="q-head"><div class="num">20</div><div>
+        <h3>O cliente pode comprar sem informar CPF/CNPJ?</h3>
+        <p class="help">Define a venda para consumidor final sem documento.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q20" value="Sim, pode comprar sem CPF/CNPJ"> Sim, pode comprar sem CPF/CNPJ</label>
+        <label class="opt"><input type="radio" name="q20" value="Não, sempre deve informar CPF/CNPJ"> Não, sempre deve informar CPF/CNPJ</label>
+        <label class="opt"><input type="radio" name="q20" value="Obrigatório apenas em alguns casos"> Obrigatório apenas em alguns casos</label>
+        <label class="opt"><input type="radio" name="q20" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q21">
+      <div class="q-head"><div class="num">21</div><div>
+        <h3>Existe algum valor de venda em que passa a ser obrigatório informar CPF/CNPJ?</h3>
+        <p class="help">Define obrigação de documento por valor da venda.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q21" value="Sim, acima do limite fiscal/legal"> Sim, acima do limite fiscal/legal</label>
+        <label class="opt"><input type="radio" name="q21" value="Sim, acima de um valor definido pela empresa"> Sim, acima de um valor definido pela empresa</label>
+        <label class="opt"><input type="radio" name="q21" value="Não, nunca será obrigatório por valor"> Não, nunca será obrigatório por valor</label>
+        <label class="opt"><input type="radio" name="q21" value="Ainda precisamos confirmar com a contabilidade"> Ainda precisamos confirmar com a contabilidade</label>
+        <label class="opt"><input type="radio" name="q21" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q22">
+      <div class="q-head"><div class="num">22</div><div>
+        <h3>É obrigatório informar vendedor em toda venda?</h3>
+        <p class="help">Define vínculo obrigatório de vendedor no PDV.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q22" value="Sim, sempre obrigatório"> Sim, sempre obrigatório</label>
+        <label class="opt"><input type="radio" name="q22" value="Não, opcional"> Não, opcional</label>
+        <label class="opt"><input type="radio" name="q22" value="Obrigatório apenas em algumas empresas"> Obrigatório apenas em algumas empresas</label>
+        <label class="opt"><input type="radio" name="q22" value="Obrigatório apenas para alguns produtos"> Obrigatório apenas para alguns produtos</label>
+        <label class="opt"><input type="radio" name="q22" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q23">
+      <div class="q-head"><div class="num">23</div><div>
+        <h3>As comissões dos vendedores serão calculadas pelo sistema?</h3>
+        <p class="help">Define se o sistema fará cálculo de comissão.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q23" value="Sim, calcular comissões"> Sim, calcular comissões</label>
+        <label class="opt"><input type="radio" name="q23" value="Não, não precisa calcular"> Não, não precisa calcular</label>
+        <label class="opt"><input type="radio" name="q23" value="Fica para etapa futura"> Fica para etapa futura</label>
+        <label class="opt"><input type="radio" name="q23" value="Depende da empresa"> Depende da empresa</label>
+        <label class="opt"><input type="radio" name="q23" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q24">
+      <div class="q-head"><div class="num">24</div><div>
+        <h3>O caixa pode vender produto que está marcado como inativo?</h3>
+        <p class="help">Define comportamento de produto inativo no PDV.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q24" value="Não, deve bloquear"> Não, deve bloquear</label>
+        <label class="opt"><input type="radio" name="q24" value="Sim, pode vender"> Sim, pode vender</label>
+        <label class="opt"><input type="radio" name="q24" value="Pode vender apenas com autorização"> Pode vender apenas com autorização</label>
+        <label class="opt"><input type="radio" name="q24" value="Apenas se ainda tiver estoque"> Apenas se ainda tiver estoque</label>
+        <label class="opt"><input type="radio" name="q24" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q25">
+      <div class="q-head"><div class="num">25</div><div>
+        <h3>Produto inativo deve aparecer na busca ou ao passar o código de barras?</h3>
+        <p class="help">Define visibilidade de produto inativo no caixa.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q25" value="Não deve aparecer nem pelo código de barras"> Não deve aparecer nem pelo código de barras</label>
+        <label class="opt"><input type="radio" name="q25" value="Aparece na busca e no código de barras"> Aparece na busca e no código de barras</label>
+        <label class="opt"><input type="radio" name="q25" value="Aparece apenas pelo código de barras"> Aparece apenas pelo código de barras</label>
+        <label class="opt"><input type="radio" name="q25" value="Aparece com aviso de inativo"> Aparece com aviso de inativo</label>
+        <label class="opt"><input type="radio" name="q25" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q26">
+      <div class="q-head"><div class="num">26</div><div>
+        <h3>O código de barras e o código interno de cada produto precisam ser únicos?</h3>
+        <p class="help">Define validação de códigos duplicados no cadastro.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q26" value="Sim, ambos precisam ser únicos"> Sim, ambos precisam ser únicos</label>
+        <label class="opt"><input type="radio" name="q26" value="Apenas código de barras precisa ser único"> Apenas código de barras precisa ser único</label>
+        <label class="opt"><input type="radio" name="q26" value="Apenas código interno precisa ser único"> Apenas código interno precisa ser único</label>
+        <label class="opt"><input type="radio" name="q26" value="Não precisam ser únicos"> Não precisam ser únicos</label>
+        <label class="opt"><input type="radio" name="q26" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q27">
+      <div class="q-head"><div class="num">27</div><div>
+        <h3>Se um produto não tiver preço cadastrado, o caixa deve bloquear a venda?</h3>
+        <p class="help">Define regra para produto sem preço.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q27" value="Sim, bloquear venda"> Sim, bloquear venda</label>
+        <label class="opt"><input type="radio" name="q27" value="Não, permitir venda"> Não, permitir venda</label>
+        <label class="opt"><input type="radio" name="q27" value="Permitir apenas com autorização"> Permitir apenas com autorização</label>
+        <label class="opt"><input type="radio" name="q27" value="Depende do produto"> Depende do produto</label>
+        <label class="opt"><input type="radio" name="q27" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q28">
+      <div class="q-head"><div class="num">28</div><div>
+        <h3>Se não tiver preço cadastrado, o operador pode informar o preço manualmente?</h3>
+        <p class="help">Define digitação manual de preço quando falta cadastro.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q28" value="Sim, pode informar manualmente"> Sim, pode informar manualmente</label>
+        <label class="opt"><input type="radio" name="q28" value="Não, não pode informar manualmente"> Não, não pode informar manualmente</label>
+        <label class="opt"><input type="radio" name="q28" value="Pode informar apenas com autorização"> Pode informar apenas com autorização</label>
+        <label class="opt"><input type="radio" name="q28" value="Depende do produto"> Depende do produto</label>
+        <label class="opt"><input type="radio" name="q28" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q29">
+      <div class="q-head"><div class="num">29</div><div>
+        <h3>Quantas casas decimais a empresa usa para quantidade, preço e desconto?</h3>
+        <p class="help">Define precisão dos cálculos no PDV e estoque.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q29" value="Quantidade 3, preço 2, desconto 2"> Quantidade 3, preço 2, desconto 2</label>
+        <label class="opt"><input type="radio" name="q29" value="Quantidade 4, preço 2, desconto 2"> Quantidade 4, preço 2, desconto 2</label>
+        <label class="opt"><input type="radio" name="q29" value="Quantidade 3, preço 4, desconto 2"> Quantidade 3, preço 4, desconto 2</label>
+        <label class="opt"><input type="radio" name="q29" value="Usar padrão do sistema"> Usar padrão do sistema</label>
+        <label class="opt"><input type="radio" name="q29" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q30">
+      <div class="q-head"><div class="num">30</div><div>
+        <h3>O arredondamento dos valores deve ser feito em cada item ou somente no total da venda?</h3>
+        <p class="help">Define como o sistema fecha centavos e totais.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q30" value="Arredondar em cada item"> Arredondar em cada item</label>
+        <label class="opt"><input type="radio" name="q30" value="Arredondar somente no total da venda"> Arredondar somente no total da venda</label>
+        <label class="opt"><input type="radio" name="q30" value="Seguir regra fiscal/contábil"> Seguir regra fiscal/contábil</label>
+        <label class="opt"><input type="radio" name="q30" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q31">
+      <div class="q-head"><div class="num">31</div><div>
+        <h3>O caixa precisa funcionar mesmo sem internet?</h3>
+        <p class="help">Define necessidade de operação offline no PDV.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q31" value="Sim, precisa funcionar offline"> Sim, precisa funcionar offline</label>
+        <label class="opt"><input type="radio" name="q31" value="Não, pode exigir internet"> Não, pode exigir internet</label>
+        <label class="opt"><input type="radio" name="q31" value="Offline apenas para vendas simples"> Offline apenas para vendas simples</label>
+        <label class="opt"><input type="radio" name="q31" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q32">
+      <div class="q-head"><div class="num">32</div><div>
+        <h3>Se o caixa vender sem internet, o que deve acontecer quando voltar a conexão e o estoque já tiver mudado?</h3>
+        <p class="help">Define tratamento de conflito entre venda offline e estoque atualizado.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q32" value="Confirmar venda e gerar ajuste de estoque"> Confirmar venda e gerar ajuste de estoque</label>
+        <label class="opt"><input type="radio" name="q32" value="Bloquear sincronização e pedir revisão"> Bloquear sincronização e pedir revisão</label>
+        <label class="opt"><input type="radio" name="q32" value="Priorizar a venda offline"> Priorizar a venda offline</label>
+        <label class="opt"><input type="radio" name="q32" value="Cancelar ou marcar a venda com conflito"> Cancelar ou marcar a venda com conflito</label>
+        <label class="opt"><input type="radio" name="q32" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q33">
+      <div class="q-head"><div class="num">33</div><div>
+        <h3>Toda venda no caixa deve emitir nota/cupom fiscal automaticamente?</h3>
+        <p class="help">Define emissão fiscal automática no fechamento da venda.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q33" value="Sim, emitir automaticamente em toda venda"> Sim, emitir automaticamente em toda venda</label>
+        <label class="opt"><input type="radio" name="q33" value="Não, operador decide quando emitir"> Não, operador decide quando emitir</label>
+        <label class="opt"><input type="radio" name="q33" value="Emitir automaticamente apenas em alguns casos"> Emitir automaticamente apenas em alguns casos</label>
+        <label class="opt"><input type="radio" name="q33" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q34">
+      <div class="q-head"><div class="num">34</div><div>
+        <h3>É permitido finalizar uma venda sem emitir nota fiscal naquele momento?</h3>
+        <p class="help">Define venda finalizada com emissão fiscal posterior.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q34" value="Sim, pode finalizar sem emitir na hora"> Sim, pode finalizar sem emitir na hora</label>
+        <label class="opt"><input type="radio" name="q34" value="Não, precisa emitir para finalizar"> Não, precisa emitir para finalizar</label>
+        <label class="opt"><input type="radio" name="q34" value="Pode apenas em contingência"> Pode apenas em contingência</label>
+        <label class="opt"><input type="radio" name="q34" value="Depende da forma de venda"> Depende da forma de venda</label>
+        <label class="opt"><input type="radio" name="q34" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q35">
+      <div class="q-head"><div class="num">35</div><div>
+        <h3>Se a emissão da nota fiscal falhar, a venda deve ser bloqueada ou ficar pendente para tentar emitir depois?</h3>
+        <p class="help">Define o fluxo quando a emissão fiscal não conclui.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q35" value="Bloquear a venda"> Bloquear a venda</label>
+        <label class="opt"><input type="radio" name="q35" value="Finalizar e deixar pendente para emitir depois"> Finalizar e deixar pendente para emitir depois</label>
+        <label class="opt"><input type="radio" name="q35" value="Usar contingência quando permitido"> Usar contingência quando permitido</label>
+        <label class="opt"><input type="radio" name="q35" value="Operador escolhe o que fazer"> Operador escolhe o que fazer</label>
+        <label class="opt"><input type="radio" name="q35" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q36">
+      <div class="q-head"><div class="num">36</div><div>
+        <h3>Para cartão ou Pix, o sistema precisa guardar dados como NSU, código de autorização ou comprovante?</h3>
+        <p class="help">Define quais dados de pagamento ficam registrados.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q36" value="Sim, guardar dados de cartão e Pix"> Sim, guardar dados de cartão e Pix</label>
+        <label class="opt"><input type="radio" name="q36" value="Guardar apenas dados de cartão"> Guardar apenas dados de cartão</label>
+        <label class="opt"><input type="radio" name="q36" value="Guardar apenas dados de Pix"> Guardar apenas dados de Pix</label>
+        <label class="opt"><input type="radio" name="q36" value="Não precisa guardar esses dados"> Não precisa guardar esses dados</label>
+        <label class="opt"><input type="radio" name="q36" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q37">
+      <div class="q-head"><div class="num">37</div><div>
+        <h3>Quando o estoque chegar no mínimo, o sistema deve apenas avisar ou bloquear novas vendas?</h3>
+        <p class="help">Define comportamento para estoque mínimo.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q37" value="Apenas avisar"> Apenas avisar</label>
+        <label class="opt"><input type="radio" name="q37" value="Bloquear novas vendas"> Bloquear novas vendas</label>
+        <label class="opt"><input type="radio" name="q37" value="Avisar e permitir com autorização"> Avisar e permitir com autorização</label>
+        <label class="opt"><input type="radio" name="q37" value="Depende do produto"> Depende do produto</label>
+        <label class="opt"><input type="radio" name="q37" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q38">
+      <div class="q-head"><div class="num">38</div><div>
+        <h3>Quando entrar uma compra no estoque, o sistema deve recalcular automaticamente o custo médio do produto?</h3>
+        <p class="help">Define atualização automática de custo médio nas entradas.</p>
+      </div></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="q38" value="Sim, recalcular automaticamente"> Sim, recalcular automaticamente</label>
+        <label class="opt"><input type="radio" name="q38" value="Não, manter custo manual"> Não, manter custo manual</label>
+        <label class="opt"><input type="radio" name="q38" value="Recalcular apenas para alguns produtos"> Recalcular apenas para alguns produtos</label>
+        <label class="opt"><input type="radio" name="q38" value="Gerar sugestão para aprovação"> Gerar sugestão para aprovação</label>
+        <label class="opt"><input type="radio" name="q38" value="Ainda não sei"> Ainda não sei</label>
+      </div>
+    </article>
+
+
+    <article class="q" id="q39">
+      <div class="q-head"><div class="num">39</div><div>
         <h3>Deseja deixar alguma observação importante?</h3>
         <p class="help">Use este espaço para explicar qualquer detalhe do negócio que não apareceu nas perguntas.</p>
       </div></div>
-      <textarea name="q20" placeholder="Exemplo: produtos críticos, regras de desconto, entrega, estoque, fiscal, atendimento, prioridades..."></textarea>
+      <textarea name="q39" placeholder="Exemplo: produtos críticos, regras de desconto, entrega, estoque, fiscal, atendimento, prioridades..."></textarea>
     </article>
 
   </form>
@@ -436,32 +724,51 @@
 <div id="toast" class="toast"></div>
 
 <script>
-var STORAGE_KEY = 'sigmia_discovery_v8';
+var STORAGE_KEY = 'sigmia_discovery_v10';
 var EMAIL_TO = 'contato@sigmia.com.br';
 var WHATSAPP_URL_LIMIT = 6500;
 var toastTimer;
 
 var questions = [
-  ['q01','As três empresas devem funcionar separadas dentro do sistema?'],
-  ['q02','Qual empresa deve começar primeiro?'],
-  ['q03','O que precisa estar pronto na primeira versão?'],
-  ['q04','Os produtos serão vendidos por unidade, por peso ou dos dois jeitos?'],
-  ['q05','Quais equipamentos o PDV deve considerar?'],
-  ['q06','O sistema deve impedir venda quando o produto estiver sem estoque?'],
-  ['q07','O estoque da loja física e da loja online será o mesmo?'],
-  ['q08','Quais locais de estoque precisam existir?'],
-  ['q09','O sistema precisa emitir cupom fiscal ou nota fiscal já na primeira versão?'],
-  ['q10','Qual documento fiscal o sistema deve emitir?'],
-  ['q11','Se houver falha na emissão fiscal, a venda pode continuar?'],
-  ['q12','O cliente poderá comprar no balcão sem se cadastrar?'],
-  ['q13','Quais permissões precisam existir no PDV?'],
-  ['q14','Qual empresa deve ter loja online primeiro?'],
-  ['q15','Na loja online, quais opções o cliente deve ter?'],
-  ['q16','O crediário/fiado entra na primeira versão?'],
-  ['q17','Quais automações de WhatsApp fazem sentido?'],
-  ['q18','Quais relatórios são obrigatórios?'],
-  ['q19','O que é mais importante na primeira versão?'],
-  ['q20','Deseja deixar alguma observação importante?']
+  ['q01','Quando um produto acaba no estoque, o sistema deve impedir a venda ou permitir mesmo assim?'],
+  ['q02','Se a empresa tiver mais de um estoque, de qual estoque o caixa deve tirar os produtos vendidos?'],
+  ['q03','Se o produto estiver sem saldo registrado no estoque, ainda pode ser vendido?'],
+  ['q04','Para produtos vendidos por peso, como queijo, carne ou granel, o caixa pode informar qualquer quantidade decimal, como 0,350 kg?'],
+  ['q05','Quando um produto tem lote ou validade, o caixa deve escolher o lote manualmente ou o sistema escolhe sozinho o lote mais antigo?'],
+  ['q06','Produto vencido pode ser vendido ou o sistema deve bloquear?'],
+  ['q07','Quando o produto é um kit, combo ou produto composto, o estoque deve baixar o kit pronto, os itens que formam o kit, ou os dois?'],
+  ['q08','Serviços, como entrega, manutenção ou taxa, podem ser vendidos sem mexer no estoque?'],
+  ['q09','O preço usado no caixa será sempre o preço cadastrado para o PDV?'],
+  ['q10','Promoções com data de início e fim devem ser aplicadas automaticamente no caixa?'],
+  ['q11','O operador do caixa pode mudar o preço do produto na hora da venda?'],
+  ['q12','O operador pode dar desconto? Existe um limite máximo de desconto?'],
+  ['q13','Para desconto maior, precisa pedir autorização de gerente ou supervisor?'],
+  ['q14','Se o cliente pagar mais do que o valor da compra, o sistema deve calcular troco?'],
+  ['q15','O troco só pode acontecer em pagamento com dinheiro?'],
+  ['q16','Uma venda pode ser paga com mais de uma forma de pagamento, por exemplo parte em dinheiro e parte no cartão?'],
+  ['q17','Quando uma venda for cancelada, os produtos devem voltar automaticamente para o estoque?'],
+  ['q18','Se a venda usou um lote específico, o produto deve voltar para o mesmo lote quando cancelar?'],
+  ['q19','Ao cancelar uma venda, o valor também deve ser estornado do caixa automaticamente?'],
+  ['q20','O cliente pode comprar sem informar CPF/CNPJ?'],
+  ['q21','Existe algum valor de venda em que passa a ser obrigatório informar CPF/CNPJ?'],
+  ['q22','É obrigatório informar vendedor em toda venda?'],
+  ['q23','As comissões dos vendedores serão calculadas pelo sistema?'],
+  ['q24','O caixa pode vender produto que está marcado como inativo?'],
+  ['q25','Produto inativo deve aparecer na busca ou ao passar o código de barras?'],
+  ['q26','O código de barras e o código interno de cada produto precisam ser únicos?'],
+  ['q27','Se um produto não tiver preço cadastrado, o caixa deve bloquear a venda?'],
+  ['q28','Se não tiver preço cadastrado, o operador pode informar o preço manualmente?'],
+  ['q29','Quantas casas decimais a empresa usa para quantidade, preço e desconto?'],
+  ['q30','O arredondamento dos valores deve ser feito em cada item ou somente no total da venda?'],
+  ['q31','O caixa precisa funcionar mesmo sem internet?'],
+  ['q32','Se o caixa vender sem internet, o que deve acontecer quando voltar a conexão e o estoque já tiver mudado?'],
+  ['q33','Toda venda no caixa deve emitir nota/cupom fiscal automaticamente?'],
+  ['q34','É permitido finalizar uma venda sem emitir nota fiscal naquele momento?'],
+  ['q35','Se a emissão da nota fiscal falhar, a venda deve ser bloqueada ou ficar pendente para tentar emitir depois?'],
+  ['q36','Para cartão ou Pix, o sistema precisa guardar dados como NSU, código de autorização ou comprovante?'],
+  ['q37','Quando o estoque chegar no mínimo, o sistema deve apenas avisar ou bloquear novas vendas?'],
+  ['q38','Quando entrar uma compra no estoque, o sistema deve recalcular automaticamente o custo médio do produto?'],
+  ['q39','Deseja deixar alguma observação importante?']
 ];
 
 /* ---------- DOM Helpers ---------- */
